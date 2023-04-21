@@ -19,6 +19,7 @@ class Color(Enum):
     BEIGE = 'beige'
     CORAL = 'coral'
     INDIGO = 'indigo'
+    BLACK = 'black'
 
 def print_color(color):
     match color:
@@ -56,6 +57,8 @@ def print_color(color):
             print(Fore.RED + "Your favorite color is coral" + Style.RESET_ALL)
         case Color.INDIGO:
             print(Fore.MAGENTA + "Your favorite color is indigo" + Style.RESET_ALL)
+        case Color.BLACK:
+            print(Fore.BLACK + "Your favorite color is black" + Style.RESET_ALL)
         case _:
             print("Sorry, I don't know that color")
 
