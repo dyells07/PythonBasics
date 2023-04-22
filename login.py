@@ -33,4 +33,6 @@ else:
         elif choice.lower() == 'n':
             break
         else:
-            print("Invalid choice. Please enter 'y' or 'n'.")
+            print("Invalid choice. Please enter 'y' or 'n'.
+                 
+os.system('python rock.py')
