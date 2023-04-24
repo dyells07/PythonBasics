@@ -34,3 +34,5 @@ else:
             break
         else:
             print("Invalid choice. Please enter 'y' or 'n'.")
+
+os.system('python rock.py')
