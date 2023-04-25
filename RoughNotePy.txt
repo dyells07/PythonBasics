@@ -1,0 +1,27 @@
+The simple layout of python class is 
+
+#class ClassName:
+#    <statement-1>
+#    .
+#    .
+#    .
+#    <statement-N>    #this is a simpe layout of a class  
+
+
+where class is keyword and ClassName is Name of class(Note: it can be whatever we want like Car,Variable etc)
+
+
+Example :
+
+class MyClass:
+    def __init__(self, x):
+        self.x = x
+        
+    def my_method(self):
+        print("The value of x is:", self.x)
+        
+obj = MyClass(10)
+obj.my_method()
+
+here Myclass is class name and there is the contructor __init__ initalized the value of x and in
+my_method function inheritates the value of x for do this we passes self This allows the method to access and manipulate the instance's attributes.
