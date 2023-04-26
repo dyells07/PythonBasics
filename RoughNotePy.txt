@@ -25,3 +25,5 @@ obj.my_method()
 
 here Myclass is class name and there is the contructor __init__ initalized the value of x and in
 my_method function inheritates the value of x for do this we passes self This allows the method to access and manipulate the instance's attributes.
+
+
