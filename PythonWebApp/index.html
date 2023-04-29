@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>User Registration Form</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../css/style.css"
+      id="theme-style"
+    />
+  </head>
+  <body>
+    <h1>User Registration Form</h1>
+    <form action="/register" method="post" onsubmit="return validateForm()">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required />
+      <label for="address">Address:</label>
+      <input type="text" id="address" name="address" required />
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required />
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required />
+      <label for="confirm-password">Confirm Password:</label>
+      <input
+        type="password"
+        id="confirm-password"
+        name="confirm-password"
+        required
+      />
+      <input type="submit" value="Submit" />
+    </form>
+
+    <div class="buttons">
+      <div data-mode="purple" class="theme-dots" id="c1"></div>
+      <div data-mode="dark" class="theme-dots" id="c2"></div>
+      <div data-mode="light" class="theme-dots" id="c3"></div>
+    </div>
+    <script>
+      let themeDots = document.getElementsByClassName("theme-dots");
+
+      for (var i = 0; i < themeDots.length; i++) {
+        themeDots[i].addEventListener("click", function () {
+          let mode = this.dataset.mode;
+          console.log("clicked", mode);
+          setTheme(mode);
+        });
+      }
+      function setTheme(mode) {
+        if (mode === "light") {
+          document.getElementById("theme-style").href = "../css/style.css";
+        } else if (mode === "dark") {
+          document.getElementById("theme-style").href = "../css/dark.css";
+        } else if (mode === "purple") {
+          document.getElementById("theme-style").href = "../css/purple.css";
+        }
+      }
+
+      function validateForm() {
+        let name = document.getElementById("name").value;
+        let address = document.getElementById("address").value;
+        let username = document.getElementById("username").value;
+        let password = document.getElementById("password").value;
+        let confirmPassword = document.getElementById("confirm-password").value;
+
+        // Check if name contains only letters and spaces
+        let nameRegex = /^[a-zA-Z\s]*$/;
+        if (!nameRegex.test(name)) {
+          alert("Name must contain only letters and spaces!");
+          return false;
+        }
+
+        // Check if address is at least 5 characters long
+        if (address.length < 5) {
+          alert("Address must be at least 5 characters long!");
+          return false;
+        }
+
+        // Check if username is at least 3 characters long
+        if (username.length < 3) {
+          alert("Username must be at least 3 characters long!");
+          return false;
+        }
+
+        // Check if password is at least 8 characters long
+        if (password.length < 8) {
+          alert("Password must be at least 8 characters long!");
+          return false;
+        }
+
+        // Check if password and confirm password match
+        if (password !== confirmPassword) {
+          alert("Passwords do not match!");
+          return false;
+        }
+
+        return true;
+      }
+    </script>
+  </body>
+</html>

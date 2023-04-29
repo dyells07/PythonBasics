@@ -1,0 +1,56 @@
+<!-- main.html -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Python Web App</title>
+    <style>
+      /* Style the navigation bar */
+      nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        background-color: #333;
+        overflow: hidden;
+      }
+
+      nav li {
+        float: left;
+      }
+
+      nav li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+
+      nav li a:hover {
+        background-color: #111;
+      }
+
+      /* Style the footer */
+      footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 10px;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <main>{% block content %}{% endblock %}</main>
+    <footer>&copy; 2023 My Python Web App</footer>
+  </body>
+</html>
