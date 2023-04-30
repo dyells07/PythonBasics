@@ -8,7 +8,7 @@ CREATE TABLE users (
     id INTEGER PRIMARY KEY,
     name TEXT,
     address TEXT,
-    username TEXT,
+    email TEXT,  -- change "username" to "email"
     password TEXT
 )
 """

@@ -10,14 +10,14 @@
     />
   </head>
   <body>
-    <h1>User Registration Form</h1>
+    <h1>ScareCrow Official</h1>
     <form action="/register" method="post" onsubmit="return validateForm()">
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" required />
       <label for="address">Address:</label>
       <input type="text" id="address" name="address" required />
-      <label for="username">Username:</label>
-      <input type="text" id="username" name="username" required />
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
       <label for="password">Password:</label>
       <input type="password" id="password" name="password" required />
       <label for="confirm-password">Confirm Password:</label>
@@ -45,6 +45,7 @@
           setTheme(mode);
         });
       }
+
       function setTheme(mode) {
         if (mode === "light") {
           document.getElementById("theme-style").href = "../css/style.css";
@@ -53,12 +54,13 @@
         } else if (mode === "purple") {
           document.getElementById("theme-style").href = "../css/purple.css";
         }
+
+        localStorage.setItem("theme", mode); // save the theme preference to localStorage
       }
 
       function validateForm() {
         let name = document.getElementById("name").value;
-        let address = document.getElementById("address").value;
-        let username = document.getElementById("username").value;
+        let email = document.getElementById("email").value;
         let password = document.getElementById("password").value;
         let confirmPassword = document.getElementById("confirm-password").value;
 
@@ -69,15 +71,10 @@
           return false;
         }
 
-        // Check if address is at least 5 characters long
-        if (address.length < 5) {
-          alert("Address must be at least 5 characters long!");
-          return false;
-        }
-
-        // Check if username is at least 3 characters long
-        if (username.length < 3) {
-          alert("Username must be at least 3 characters long!");
+        // Check if email is a valid email address
+        let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          alert("Invalid email address!");
           return false;
         }
 
@@ -95,6 +92,11 @@
 
         return true;
       }
+
+      window.onload = function () {
+        let theme = localStorage.getItem("theme") || "light"; // retrieve the theme preference from localStorage, default to "light" if not found
+        setTheme(theme); // set the theme based on the preference
+      };
     </script>
   </body>
 </html>
