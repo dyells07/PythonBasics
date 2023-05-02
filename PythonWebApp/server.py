@@ -46,7 +46,7 @@ class MyHandler(http.server.SimpleHTTPRequestHandler):
 
         # Send a response to the client
         self.send_response(303)
-        self.send_header('Location', '/success.html')
+        self.send_header('Location', '/main.html')
         self.end_headers()
 
 print(Fore.GREEN + 'Server listening on port', PORT)
