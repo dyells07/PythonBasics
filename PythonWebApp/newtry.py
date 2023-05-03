@@ -3,6 +3,8 @@ import gspread
 import socketserver
 import sqlite3
 import csv
+import smtplib
+from email.mime.text import MIMEText
 from colorama import init, Fore, Style
 from oauth2client.service_account import ServiceAccountCredentials
 from google.oauth2.service_account import Credentials
@@ -44,9 +46,27 @@ class MyHandler(http.server.SimpleHTTPRequestHandler):
                     (name, address, email, password))
         con.commit()
 
+        # Send an email to the user
+        smtp_server = "smtp.gmail.com"
+        smtp_port = 587
+        smtp_username = "bhimkhanal999@gmail.com"  # Replace with your email address
+        smtp_password = "Mgklace@21"  # Replace with your email password
+        from_address = smtp_username
+        to_address = email
+        subject = "Thank you for registering!"
+        body = f"Dear {name},\n\nThank you for registering. Your password is: {password}\n\nBest regards,\nThe Team"
+        message = MIMEText(body)
+        message['Subject'] = subject
+        message['From'] = from_address
+        message['To'] = to_address
+        with smtplib.SMTP(smtp_server, smtp_port) as smtp_connection:
+            smtp_connection.starttls()
+            smtp_connection.login(smtp_username, smtp_password)
+            smtp_connection.send_message(message)
+
         # Send a response to the client
         self.send_response(303)
-        self.send_header('Location', '/login.html')
+        self.send_header('Location', '/main.html')
         self.end_headers()
 
 print(Fore.GREEN + 'Server listening on port', PORT)
