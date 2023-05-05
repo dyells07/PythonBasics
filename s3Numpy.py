@@ -47,3 +47,13 @@ print(arrayone)
 arrayrandom = np.random.random((7,2,3))
 
 print(arrayrandom)
+
+
+# Set the random seed to 7
+np.random.seed(7)
+
+# Generate a 4x5 array of random integers between 2 and 7
+randomseed = np.random.randint(2, 8, size=(4, 5))
+
+# Print the array
+print(randomseed)
